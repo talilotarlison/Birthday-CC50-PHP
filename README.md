@@ -1,76 +1,88 @@
-## Web Project: Birthday CC50 Clone
+[![Version](https://poser.pugx.org/flightphp/core/version)](https://packagist.org/packages/flightphp/core)
+[![Monthly Downloads](https://poser.pugx.org/flightphp/core/d/monthly)](https://packagist.org/packages/flightphp/core)
+![PHPStan: Level 6](https://img.shields.io/badge/PHPStan-level%206-brightgreen.svg?style=flat)
+[![License](https://poser.pugx.org/flightphp/core/license)](https://packagist.org/packages/flightphp/core)
+[![PHP Version Require](https://poser.pugx.org/flightphp/core/require/php)](https://packagist.org/packages/flightphp/core)
+![Matrix](https://img.shields.io/matrix/flight-php-framework%3Amatrix.org?server_fqdn=matrix.org&style=social&logo=matrix)
+[![](https://dcbadge.limes.pink/api/server/https://discord.gg/Ysr4zqHfbX)](https://discord.gg/Ysr4zqHfbX)
 
-Este é um projeto de clone do Birthday CC50, desenvolvido em PHP utilizando o micro framework Flight e SQLite para o gerenciamento de banco de dados. O propósito deste projeto é aprofundar o conhecimento em PHP e no desenvolvimento de aplicações web simples.
+# What is Flight?
 
-### Descrição do Projeto
+Flight is a fast, simple, extensible framework for PHP. Flight enables you to
+quickly and easily build RESTful web applications. Flight also has zero dependencies.
 
-O Birthday CC50 é um aplicativo que permite aos usuários armazenar e gerenciar informações sobre aniversários. O clone possui funcionalidades como registro de aniversários, visualização de listas e autenticação de usuários.
+# Basic Usage
 
-### Tecnologias Utilizadas
-
-- **PHP**: Linguagem de programação usada para criar a lógica do servidor.
-- **Flight**: Micro framework PHP que facilita a construção de aplicações web.
-- **SQLite**: Sistema de gerenciamento de banco de dados leve e integrado, utilizado para armazenar as informações dos usuários e aniversários.
-- **HTML/CSS**: Para a criação das interfaces do usuário.
-
-### Funcionalidades
-
-- **Registro de Usuários**: Permite que novos usuários se cadastrem no sistema.
-- **Login**: Usuários podem fazer login para acessar suas informações.
-- **Gerenciamento de Aniversários**: Adição, edição e exclusão de aniversários.
-- **Listagem de Aniversários**: Exibição de todos os aniversários cadastrados na forma de lista.
-
-### Estrutura do Projeto
+First install it with Composer
 
 ```
-/birthday-clone
-│
-├── /app # Código principal da aplicação
-│ ├── /controllers # Controladores para gerenciar a lógica
-│ ├── /models # Modelos que interagem com o banco de dados
-│ └── /views # Arquivos de visualização
-│
-├── /public # Arquivos públicos (acessíveis via URL)
-│ ├── index.php # Ponto de entrada da aplicação
-│ └── /assets # Imagens, CSS e JavaScript
-│
-├── /database # Arquivos de banco de dados
-│ └── database.sqlite # Arquivo do banco de dados SQLite
-│
-└── README.md # Este arquivo
+composer require flightphp/core
 ```
 
-### Como Instalar e Executar
+or you can download a zip of this repo. Then you would have a basic `index.php` file like the following:
 
-1. **Clone o repositório**
-```bash
-git clone https://github.com/usuario/birthday-clone.git
-cd birthday-clone
+```php
+// if installed with composer
+require 'vendor/autoload.php';
+// or if installed manually by zip file
+// require 'flight/Flight.php';
+
+Flight::route('/', function () {
+  echo 'hello world!';
+});
+
+Flight::start();
 ```
 
-2. **Configurar o ambiente**
-- Certifique-se de ter o PHP e o SQLite instalados.
-- Configure o servidor local (ex: XAMPP, MAMP ou um servidor embutido do PHP).
+## Is it fast?
 
-3. **Acessar o projeto**
-- Abra um terminal e execute o servidor embutido:
-```bash
-php -S localhost:8000 -t public
-```
-- Acesse `http://localhost:8000` em seu navegador.
+Yes! Flight is fast. It is one of the fastest PHP frameworks available. You can see all the benchmarks at [TechEmpower](https://www.techempower.com/benchmarks/#section=data-r18&hw=ph&test=frameworks)
 
-### Contribuição
+See the benchmark below with some other popular PHP frameworks. This is measured in requests processed within the same timeframe. 
 
-Contribuições são bem-vindas! Sinta-se livre para abrir issues e pull requests. Para grandes mudanças, abra uma discussão primeiro para que possamos discutir as alterações.
+| Framework | Plaintext Requests| JSON Requests|
+| --------- | ------------ | ------------ |
+| Flight      | 190,421    | 182,491 |
+| Yii         | 145,749    | 131,434 |
+| Fat-Free    | 139,238	   | 133,952 |
+| Slim        | 89,588     | 87,348  |
+| Phalcon     | 95,911     | 87,675  |
+| Symfony     | 65,053     | 63,237  |
+| Lumen	      | 40,572     | 39,700  |
+| Laravel     | 26,657     | 26,901  |
+| CodeIgniter | 20,628     | 19,901  |
 
-### Licença
+## Skeleton App
 
-Esse projeto está licenciado sob a MIT License - veja o arquivo [LICENSE](LICENSE) para detalhes.
+You can also install a skeleton app. Go to [flightphp/skeleton](https://github.com/flightphp/skeleton) for instructions on how to get started!
 
-### Contato
+# Documentation
 
-Para qualquer dúvida ou sugestão, entre em contato através das minhas redes.
+We have our own documentation website that is built with Flight (naturally). Learn more about the framework at [docs.flightphp.com](https://docs.flightphp.com).
 
----
+# Community
 
-Este README serve como uma introdução ao projeto e guia para instalação e uso. Certifique-se de personalizar as informações conforme a necessidade!
+Chat with us on Matrix IRC [#flight-php-framework:matrix.org](https://matrix.to/#/#flight-php-framework:matrix.org)
+
+[![](https://dcbadge.limes.pink/api/server/https://discord.gg/Ysr4zqHfbX)](https://discord.gg/Ysr4zqHfbX)
+
+# Upgrading From v2
+
+If you have a current project on v2, you should be able to upgrade to v3 with no issues depending on how your project was built. If there are any issues with upgrade, they are documented in the [migrating to v3](https://docs.flightphp.com/learn/migrating-to-v3) documentation page. It is the intention of Flight to maintain longterm stability of the project and to not add rewrites with major version changes.
+
+# Requirements
+
+> [!IMPORTANT]
+> Flight requires `PHP 7.4` or greater.
+
+**Note:** PHP 7.4 is supported because at the current time of writing (2024) PHP 7.4 is the default version for some LTS Linux distributions. Forcing a move to PHP >8 would cause a lot of heartburn for those users.
+
+The framework also supports PHP >8.
+
+# Roadmap
+
+To see the current and future roadmap for the Flight Framework, visit the [project roadmap](https://github.com/orgs/flightphp/projects/1/views/1)
+
+# License
+
+Flight is released under the [MIT](http://docs.flightphp.com/license) license.
